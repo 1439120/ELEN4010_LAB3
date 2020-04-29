@@ -6,8 +6,14 @@
     <script defer src="index.js"></script> 
 </head>
 <body>
-    <h1 id="heading">Students in the School of EIE:</h1> 
-    <button type="button" id="addButton">Add</button>
-    <div id="studentList"></div>
+    <h1 id="heading">Class List</h1>
+    <input type="text" id="search-text" placeholder="Filter students">
+    <select id="mySelect"></select>
+    <div id="students"> </div>
+
+    <input type="text" id="new-student-text" placeholder="Name">
+    <button id="add-student">Add new student</button>
+    <script src="class-list-app.js"> </script>
+    <p id="demo"></p>
 </body>
 </html>
