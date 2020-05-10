@@ -23,7 +23,14 @@ router.get('/api/create', function (req, res) {
 
 router.post('/api/create', function (req, res) {
   console.log('Creating the following student:', req.body.student)
-  classList.push(req.body.student)
+  var def = 111111
+  if (!isNaN(req.body.id) && req.body.id.length !== 0)def = req.body.id
+  var student = {
+    name: req.body.student,
+    studentNumber: def,
+    electives: 'ELEN4010'
+  }
+  classList.push(student)
   res.redirect(req.baseUrl + '/api/list')
 })
 
@@ -44,10 +51,13 @@ router.get('/api/edit', function (req, res) {
 })
 
 router.post('/api/edit', function (req, res) {
-  console.log('editing a student entry')
-
   if (!isNaN(req.body.id) && req.body.id < classList.length && classList.length > 0 && req.body.name.length > 0) {
-    classList[req.body.id] = req.body.name
+    console.log('editing a student name')
+    classList[req.body.id].name = req.body.name
+  }
+  if (!isNaN(req.body.id) && req.body.id < classList.length && classList.length > 0) {
+    console.log('editing a student course')
+    classList[req.body.id].electives = req.body.course
   }
 
   res.redirect(req.baseUrl + '/api/list')
